@@ -1,0 +1,6 @@
+<ion-content>
+  <firebase-ui
+    (signInSuccessWithAuthResult)="successCallback($event)"
+    (signInFailure)="errorCallback($event)"
+    (uiShown)="uiShownCallback()"></firebase-ui>
+</ion-content>

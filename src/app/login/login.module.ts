@@ -1,15 +1,15 @@
-import { environment } from './../environments/environment';
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy } from '@angular/router';
-import { firebase, firebaseui, FirebaseUIModule } from 'firebaseui-angular';
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { IvyGalleryModule } from 'angular-gallery';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from './../../environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { firebase, firebaseui, FirebaseUIModule } from 'firebaseui-angular';
+import { IonicModule } from '@ionic/angular';
+
+import { LoginPageRoutingModule } from './login-routing.module';
+
+import { LoginPage } from './login.page';
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
   signInOptions: [
@@ -35,18 +35,15 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
   credentialHelper: firebaseui.auth.CredentialHelper.GOOGLE_YOLO,
 };
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
   imports: [
-    BrowserModule,
-    IonicModule.forRoot(),
-    AppRoutingModule,
-    IvyGalleryModule,
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    LoginPageRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     FirebaseUIModule.forRoot(firebaseUiAuthConfig),
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
-  bootstrap: [AppComponent],
+  declarations: [LoginPage],
 })
-export class AppModule {}
+export class LoginPageModule {}
